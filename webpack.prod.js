@@ -1,24 +1,23 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/index.tsx',
     output: {
         filename: 'bundle.js',
     },
-    devtool: "source-map",
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { test: /\.js?$/, loader: "source-map-loader" },
             {
-                test: /\.css?$/,
+                test: /\.css$/,
                 use: ['style-loader', 'css-loader', "postcss-loader"],
             },
-            
+
         ],
     },
     resolve: {
@@ -28,13 +27,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
+        new BundleAnalyzerPlugin()
     ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
-        },
-        hot: true,
-        open: true,
-        historyApiFallback : true,
-    },
 }
