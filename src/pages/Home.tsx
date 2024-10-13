@@ -1,6 +1,6 @@
+import { useCallback, useState } from "react";
+import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { FaLock, FaRegUser } from "react-icons/fa6";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useCallback } from "react";
 
 type Inputs = {
     id: string;
@@ -9,13 +9,27 @@ type Inputs = {
 }
 
 function HomePage() {
-    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
+    const idPattern = /\w{6}.+/
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~])[^  |\n]+$/gm
+    const [errorMessage, setErrorMessage] = useState("");
+    const { register, handleSubmit } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = useCallback(data => {
-        console.log(data);
+        setErrorMessage("");
     }, [])
+    const onSubmitError: SubmitErrorHandler<Inputs> = useCallback((errors, e) => {
+        if (errors.id && errors.id.message) {
+            setErrorMessage(errors.id.message);
+            return;
+        }
+
+        if (errors.password && errors.password.message) {
+            setErrorMessage(errors.password.message);
+            return;
+        }
+    }, []);
 
     return <div className="w-full h-full flex justify-center items-center bg-[url('assets/images/background2.png')] bg-no-repeat bg-cover">
-        <form onSubmit={handleSubmit(onSubmit)} className="max-w-[350px] border border-white border-opacity-30 backdrop-blur-md rounded-lg overflow-hidden flex-1 py-[10px]">
+        <form onSubmit={handleSubmit(onSubmit, onSubmitError)} className="max-w-[350px] border border-white border-opacity-30 backdrop-blur-md rounded-lg overflow-hidden flex-1 py-[10px]">
             <div className="flex w-full pb-[10px] my-[10px] ">
                 <div className="w-full flex justify-center py-[10px]">
                     <span className="text-[30px] text-white font-bold">Login</span>
@@ -26,7 +40,17 @@ function HomePage() {
                     <div className="flex w-full h-full mr-2">
                         <input className="w-full h-full bg-transparent text-white placeholder:text-white outline-none border-none"
                             placeholder="Username"
-                            {...register("id", { required: true })} />
+
+                            {...register("id", {
+                                required : {
+                                    value : true,
+                                    message : "아이디를 입력해주세요."
+                                },
+                                pattern: {
+                                    value: idPattern,
+                                    message: "아이디는 6글자 이상이여야 합니다."
+                                }
+                            })} />
                     </div>
                     <div className="flex h-full text-white">
                         <FaRegUser />
@@ -38,14 +62,24 @@ function HomePage() {
                     <div className="flex w-full h-full mr-2 ">
                         <input type="password" className="w-full h-full bg-transparent text-white placeholder:text-white outline-none border-none"
                             placeholder="Password"
-                            {...register("password", { required: true })} />
+
+                            {...register("password", {
+                                required : {
+                                    value : true,
+                                    message : "비밀번호를 입력해주세요."
+                                },
+                                pattern: {
+                                    value: passwordPattern,
+                                    message: "비밀번호는 6글자 이상, 영소문자, 영대문자, 특수문자(~!@#$%^&*)가 포함되어야 합니다."
+                                }
+                            })} />
                     </div>
                     <div className="flex h-full text-white">
                         <FaLock />
                     </div>
                 </div>
             </div>
-            
+
             <div className="flex justify-between w-full px-[20px] py-[10px]">
                 <div className="flex justify-between items-center w-full">
                     <div className="flex ">
@@ -76,8 +110,8 @@ function HomePage() {
                 </div>
             </div>
             <div className="w-full mb-[10px]">
-                <div className="text-red-400 flex justify-center w-full py-[10px]">
-                    사용자가 존재하지 않습니다
+                <div className="text-red-400 w-full flex justify-center text-center px-[20px] py-[10px]">
+                    {errorMessage !== "" && errorMessage}
                 </div>
             </div>
         </form>
