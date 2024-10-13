@@ -1,6 +1,8 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import dotenv from "dotenv";
+import { DefinePlugin } from 'webpack';
+
+dotenv.config({ path: './.env' });
 
 module.exports = {
     mode: 'production',
@@ -12,9 +14,8 @@ module.exports = {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" },
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
-                test: /\.css$/,
+                test: /\.css?$/,
                 use: ['style-loader', 'css-loader', "postcss-loader"],
             },
 
@@ -27,6 +28,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
-        new BundleAnalyzerPlugin()
-    ],
+        new DefinePlugin({
+            "process.env" : JSON.stringify(process.env),
+        })
+    ]
 }

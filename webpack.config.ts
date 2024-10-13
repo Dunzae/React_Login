@@ -1,5 +1,9 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
+import dotenv from "dotenv";
+import { DefinePlugin } from 'webpack';
+
+dotenv.config({ path: './.env.development' });
 
 module.exports = {
     mode: 'development',
@@ -18,7 +22,7 @@ module.exports = {
                 test: /\.css?$/,
                 use: ['style-loader', 'css-loader', "postcss-loader"],
             },
-            
+
         ],
     },
     resolve: {
@@ -28,6 +32,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
+        new DefinePlugin({
+            "process.env" : JSON.stringify(process.env),
+        })
     ],
     devServer: {
         static: {
@@ -35,6 +42,6 @@ module.exports = {
         },
         hot: true,
         open: true,
-        historyApiFallback : true,
+        historyApiFallback: true,
     },
 }
