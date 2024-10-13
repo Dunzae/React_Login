@@ -1,6 +1,8 @@
 import { useCallback, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { FaLock, FaRegUser } from "react-icons/fa6";
+import axiosInstance from "../api/index";
+import ServerError from "../constant/ServerError"
 
 type Inputs = {
     id: string;
@@ -13,8 +15,17 @@ function HomePage() {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~])[^  |\n]+$/gm
     const [errorMessage, setErrorMessage] = useState("");
     const { register, handleSubmit } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = useCallback(data => {
+    const onSubmit: SubmitHandler<Inputs> = useCallback(async ({id, password}) => {
         setErrorMessage("");
+        
+        const result = await axiosInstance.postApi("/auth/signIn", {id, password})
+        if(result.error !== undefined) {
+            alert("로그인에 실패하였습니다.")
+            setErrorMessage(ServerError[result.error]);
+        } else {
+            alert("로그인에 성공하셨습니다.");
+        }
+    
     }, [])
     const onSubmitError: SubmitErrorHandler<Inputs> = useCallback((errors, e) => {
         if (errors.id && errors.id.message) {
