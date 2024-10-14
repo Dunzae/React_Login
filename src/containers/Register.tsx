@@ -1,31 +1,33 @@
 import { useCallback, useMemo, useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import LoginComponent from "@components/Login";
+import RegisterComponent from "@components/Register";
 import axiosInstance from "@apis/index";
 import ServerError from "@constants/ServerError";
 
 export type InputsType = {
     id: string;
+    email: string;
     password: string;
     remember: boolean;
 }
 
 const idPattern = /\w{6}.+/
+const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~])[^  |\n]+$/gm
 
-function LoginContainer() {
+function RegisterContainer() {
     const [errorMessage, setErrorMessage] = useState("");
     const { register, handleSubmit } = useForm<InputsType>();
 
-    const onSubmit: SubmitHandler<InputsType> = useCallback(async ({ id, password }) => {
+    const onSubmit: SubmitHandler<InputsType> = useCallback(async ({ id, email, password }) => {
         setErrorMessage("");
 
-        const result = await axiosInstance.postApi("/auth/signIn", { id, password })
+        const result = await axiosInstance.postApi("/auth/signUp", { id, email, password })
         if (result.error !== undefined) {
-            alert("로그인에 실패하였습니다.")
+            alert("회원가입에 실패하였습니다.")
             setErrorMessage(ServerError[result.error]);
         } else {
-            alert("로그인에 성공하셨습니다.");
+            alert("회원가입에 성공하셨습니다.");
         }
 
     }, [])
@@ -33,6 +35,11 @@ function LoginContainer() {
     const onSubmitError: SubmitErrorHandler<InputsType> = useCallback((errors) => {
         if (errors.id && errors.id.message) {
             setErrorMessage(errors.id.message);
+            return;
+        }
+
+        if (errors.email && errors.email.message) {
+            setErrorMessage(errors.email.message);
             return;
         }
 
@@ -45,15 +52,16 @@ function LoginContainer() {
     const memorizedHandleSubmit = useMemo(() => handleSubmit(onSubmit, onSubmitError), []);
 
     return (
-        <LoginComponent
+        <RegisterComponent
             onSubmit={memorizedHandleSubmit}
             errorMessage={errorMessage}
             register={register}
             idPattern={idPattern}
+            emailPattern={emailPattern}
             passwordPattern={passwordPattern}
         />
 
     )
 }
 
-export default LoginContainer;
+export default RegisterContainer;
