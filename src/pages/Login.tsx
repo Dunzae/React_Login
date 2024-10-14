@@ -1,4 +1,4 @@
-import LoginContainer from "../containers/Login";
+import LoginContainer from "@containers/Login";
 
 function LoginPage() {
     return <LoginContainer />

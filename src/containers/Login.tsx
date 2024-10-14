@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState } from "react";
-import LoginComponent from "../components/Login";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import axiosInstance from "../api";
-import ServerError from "../constant/ServerError";
+import LoginComponent from "@components/Login";
+import axiosInstance from "@apis/index";
+import ServerError from "@constants/ServerError";
 
 export type InputsType = {
     id: string;

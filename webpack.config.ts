@@ -27,13 +27,22 @@ module.exports = {
     },
     resolve: {
         extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        alias: {
+            '@apis': path.resolve(__dirname, "src/apis"),
+            '@pages': path.resolve(__dirname, 'src/pages'),
+            '@types': path.resolve(__dirname, 'src/types'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
+            '@constants': path.resolve(__dirname, 'src/constants'),
+            '@components': path.resolve(__dirname, 'src/components'),
+            '@containers': path.resolve(__dirname, 'src/containers'),
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
         new DefinePlugin({
-            "process.env" : JSON.stringify(process.env),
+            "process.env": JSON.stringify(process.env),
         })
     ],
     devServer: {
