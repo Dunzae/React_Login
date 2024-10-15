@@ -1,8 +1,10 @@
-import { useCallback, useMemo, useState } from "react";
+import { useContext, useCallback, useMemo, useState, useEffect } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
 import LoginComponent from "@components/Login";
 import axiosInstance from "@apis/index";
 import ServerError from "@constants/ServerError";
+import TokenContext from "@constants/TokenContext";
 
 export type InputsType = {
     id: string;
@@ -14,6 +16,7 @@ const idPattern = /\w{6}.+/
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~])[^  |\n]+$/gm
 
 function LoginContainer() {
+    const token = useContext(TokenContext);
     const [errorMessage, setErrorMessage] = useState("");
     const { register, handleSubmit } = useForm<InputsType>();
 
@@ -25,10 +28,12 @@ function LoginContainer() {
             alert("로그인에 실패하였습니다.")
             setErrorMessage(ServerError[result.error]);
         } else {
-            alert("로그인에 성공하셨습니다.");
+            token.setAccessToken(result.data?.accessToken);
+            token.setRefreshToken(result.data?.refreshToken);
+            localStorage.setItem("accessToken", result.data?.accessToken);
+            localStorage.setItem("refreshToken", result.data?.refreshToken);
         }
-
-    }, [])
+    }, [token])
 
     const onSubmitError: SubmitErrorHandler<InputsType> = useCallback((errors) => {
         if (errors.id && errors.id.message) {
@@ -44,6 +49,9 @@ function LoginContainer() {
 
     const memorizedHandleSubmit = useMemo(() => handleSubmit(onSubmit, onSubmitError), []);
 
+    if (token.accessToken && token.refreshToken)
+        return <Navigate to="/" />;
+
     return (
         <LoginComponent
             onSubmit={memorizedHandleSubmit}
@@ -52,8 +60,8 @@ function LoginContainer() {
             idPattern={idPattern}
             passwordPattern={passwordPattern}
         />
-
     )
+        
 }
 
 export default LoginContainer;
