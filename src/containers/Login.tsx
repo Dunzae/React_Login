@@ -31,10 +31,20 @@ function LoginContainer() {
         } else {
             token.setAccessToken(result.data?.accessToken);
             token.setRefreshToken(result.data?.refreshToken);
-            setLocalStorageItem("token", {
-                accessToken: result.data?.accessToken,
-                refreshToken: result.data?.refreshToken,
-            })
+
+            if(remember) {
+                setLocalStorageItem("token", {
+                    accessToken: result.data?.accessToken,
+                    refreshToken: result.data?.refreshToken,
+                })
+            } else {
+                setLocalStorageItem("token", {
+                    accessToken: result.data?.accessToken,
+                    refreshToken: result.data?.refreshToken,
+                }, {
+                    exp : "1h"
+                })
+            }
         }
     }, [token])
 
