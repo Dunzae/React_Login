@@ -1,6 +1,7 @@
 import { UseFormRegister } from "react-hook-form";
 import { FaLock, FaRegUser } from "react-icons/fa6";
 import { InputsType } from "@containers/Login";
+import { Link } from "react-router-dom";
 
 interface IProps {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>,
@@ -31,16 +32,16 @@ function LoginComponent({
                             <input autoComplete="username" className="w-full h-full bg-transparent text-white placeholder:text-white outline-none border-none"
                                 placeholder="Username"
                                 {
-                                    ...register("id", {
-                                        required: {
-                                            value: true,
-                                            message: "아이디를 입력해주세요."
-                                        },
-                                        pattern: {
-                                            value: idPattern,
-                                            message: "아이디는 6글자 이상이여야 합니다."
-                                        }
-                                    })
+                                ...register("id", {
+                                    required: {
+                                        value: true,
+                                        message: "아이디를 입력해주세요."
+                                    },
+                                    pattern: {
+                                        value: idPattern,
+                                        message: "아이디는 6글자 이상이여야 합니다."
+                                    }
+                                })
                                 }
                             />
                         </div>
@@ -55,16 +56,16 @@ function LoginComponent({
                             <input type="password" autoComplete="current-password" className="w-full h-full bg-transparent text-white placeholder:text-white outline-none border-none"
                                 placeholder="Password"
                                 {
-                                    ...register("password", {
-                                        required: {
-                                            value: true,
-                                            message: "비밀번호를 입력해주세요."
-                                        },
-                                        pattern: {
-                                            value: passwordPattern,
-                                            message: "비밀번호는 6글자 이상, 영소문자, 영대문자, 특수문자(~!@#$%^&*)가 포함되어야 합니다."
-                                        }
-                                    })
+                                ...register("password", {
+                                    required: {
+                                        value: true,
+                                        message: "비밀번호를 입력해주세요."
+                                    },
+                                    pattern: {
+                                        value: passwordPattern,
+                                        message: "비밀번호는 6글자 이상, 영소문자, 영대문자, 특수문자(~!@#$%^&*)가 포함되어야 합니다."
+                                    }
+                                })
                                 }
                             />
                         </div>
@@ -81,7 +82,7 @@ function LoginComponent({
                                 <input id="remember"
                                     type="checkbox"
                                     className="cursor-pointer"
-                                    { ...register("remember") }
+                                    {...register("remember")}
                                 />
                             </div>
                             <span className="text-white">
@@ -101,7 +102,9 @@ function LoginComponent({
                 <div className="flex w-full">
                     <div className='flex w-full px-[20px] pb-[10px] text-white justify-center'>
                         <span className="mr-2">Don't have account?</span>
-                        <button type="button" className="border-b-2 border-transparent hover:border-white">Register</button>
+                        <button type="button" className="border-b-2 border-transparent hover:border-white">
+                            <Link to="/register">Register</Link>
+                            </button>
                     </div>
                 </div>
                 <div className="w-full mb-[10px]">

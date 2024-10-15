@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { UseFormRegister } from "react-hook-form";
 import { FaLock, FaRegUser } from "react-icons/fa6";
 import { AiOutlineMail } from "react-icons/ai"; import { InputsType } from "@containers/Register";
@@ -121,13 +122,17 @@ function RegisterComponent({
                 </div>
                 <div className="flex w-full px-[20px] mb-[10px]">
                     <div className="flex py-2 justify-center w-full rounded-3xl bg-white ">
-                        <button type="submit" className="w-full h-full">Login</button>
+                        <button type="submit" className="w-full h-full">Register</button>
                     </div>
                 </div>
                 <div className="flex w-full">
                     <div className='flex w-full px-[20px] pb-[10px] text-white justify-center'>
                         <span className="mr-2">Don't have account?</span>
-                        <button type="button" className="border-b-2 border-transparent hover:border-white">Register</button>
+                        <button type="button" className="border-b-2 border-transparent hover:border-white">
+                            <Link to="/login">
+                                Login
+                            </Link>
+                        </button>
                     </div>
                 </div>
                 <div className="w-full mb-[10px]">
