@@ -7,8 +7,7 @@ function LogoutPage() {
     useEffect(() => {
         token.setAccessToken(undefined);
         token.setRefreshToken(undefined);
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("token");
     })
 
     return <Navigate to ="/login" />;
