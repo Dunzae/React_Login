@@ -16,9 +16,22 @@ const App = () => {
   }), [accessToken, refreshToken]);
 
   useEffect(() => {
-    setAccessToken(localStorage.getItem("accessToken") || undefined);
-    setRefreshToken(localStorage.getItem("refreshToken") || undefined);
-  });
+    const storageToken = JSON.parse(localStorage.getItem("token") || "{}")
+
+    if (Object.keys(storageToken).length !== 0) {
+      if (storageToken.value.accessToken && storageToken.value.refreshToken) {
+        if (storageToken.opt) {
+          if (storageToken.opt.exp > Date.now()) {
+            setAccessToken(storageToken.value.accessToken);
+            setRefreshToken(storageToken.value.refreshToken)
+          }
+        } else {
+          setAccessToken(storageToken.value.accessToken);
+          setRefreshToken(storageToken.value.refreshToken)
+        }
+      }
+    }
+  })
 
   return (
     <TokenContext.Provider value={tokenContextValue}>

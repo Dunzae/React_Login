@@ -5,6 +5,7 @@ import LoginComponent from "@components/Login";
 import axiosInstance from "@apis/index";
 import ServerError from "@constants/ServerError";
 import TokenContext from "@constants/TokenContext";
+import { setLocalStorageItem } from "../utils/storage";
 
 export type InputsType = {
     id: string;
@@ -20,7 +21,7 @@ function LoginContainer() {
     const [errorMessage, setErrorMessage] = useState("");
     const { register, handleSubmit } = useForm<InputsType>();
 
-    const onSubmit: SubmitHandler<InputsType> = useCallback(async ({ id, password }) => {
+    const onSubmit: SubmitHandler<InputsType> = useCallback(async ({ id, password, remember }) => {
         setErrorMessage("");
 
         const result = await axiosInstance.postApi("/auth/signIn", { id, password })
@@ -30,8 +31,10 @@ function LoginContainer() {
         } else {
             token.setAccessToken(result.data?.accessToken);
             token.setRefreshToken(result.data?.refreshToken);
-            localStorage.setItem("accessToken", result.data?.accessToken);
-            localStorage.setItem("refreshToken", result.data?.refreshToken);
+            setLocalStorageItem("token", {
+                accessToken: result.data?.accessToken,
+                refreshToken: result.data?.refreshToken,
+            })
         }
     }, [token])
 
@@ -61,7 +64,7 @@ function LoginContainer() {
             passwordPattern={passwordPattern}
         />
     )
-        
+
 }
 
 export default LoginContainer;
