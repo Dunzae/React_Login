@@ -29,6 +29,7 @@ module.exports = {
         extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
         alias: {
             '@apis': path.resolve(__dirname, "src/apis"),
+            '@utils': path.resolve(__dirname, "src/utils"),
             '@pages': path.resolve(__dirname, 'src/pages'),
             '@types': path.resolve(__dirname, 'src/types'),
             '@assets': path.resolve(__dirname, 'src/assets'),
