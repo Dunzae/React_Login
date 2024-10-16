@@ -12,7 +12,7 @@ function MenubarComponent({
     currentPath
 }: IMenubarComponent) {
     return (
-        <ul className="flex flex-row lg:flex lg:flex-col lg:items-center lg:py-5">
+        <ul className="flex flex-row lg:flex lg:flex-col lg:items-center lg:py-5 lg:border-r lg:border-r-[#E6E6E6]">
             <li className="p-4 flex flex-grow justify-center lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center">
                 {currentPath === "/" ? <IoHome size={30} /> : <IoHomeOutline size={30} />}
             </li>
