@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import HomePage from "@pages/Home";
 import LoginPage from "@pages/Login";
 import RegisterPage from "@pages/Register";
 import LogoutPage from "@pages/Logout";
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
         children : [
             {
                 path : "/",
-                element : <div>홈 페이지</div>
+                element : <HomePage />
             },
             {
                 path : "/write",

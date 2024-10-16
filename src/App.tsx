@@ -20,14 +20,14 @@ const App = () => {
     const storageToken = getLocalStorageItem("token");
 
     if (storageToken !== undefined) {
-      setAccessToken(storageToken.value.accessToken);
-      setRefreshToken(storageToken.value.refreshToken)
+      setAccessToken(storageToken.accessToken);
+      setRefreshToken(storageToken.refreshToken)
     }
   })
 
   return (
     <TokenContext.Provider value={tokenContextValue}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </TokenContext.Provider>
   )
 };
