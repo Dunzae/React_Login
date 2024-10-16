@@ -110,6 +110,7 @@
   },
   "include": [
     "src/**/*",
-    "axios.d.ts"
+    "axios.d.ts",
+    "image.d.ts"
   ]
 }
