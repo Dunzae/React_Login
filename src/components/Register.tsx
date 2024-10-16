@@ -47,7 +47,7 @@ function RegisterComponent({
                                 }
                             />
                         </div>
-                        <div className="flex h-full text-white">
+                        <div className="flex h-full flex-1 text-white">
                             <FaRegUser />
                         </div>
                     </div>
@@ -71,7 +71,7 @@ function RegisterComponent({
                                 }
                             />
                         </div>
-                        <div className="flex h-full text-white">
+                        <div className="flex h-full flex-1 text-white">
                             <AiOutlineMail />
                         </div>
                     </div>
@@ -95,7 +95,7 @@ function RegisterComponent({
                                 }
                             />
                         </div>
-                        <div className="flex h-full text-white">
+                        <div className="flex h-full flex-1 text-white">
                             <FaLock />
                         </div>
                     </div>
@@ -103,20 +103,20 @@ function RegisterComponent({
 
                 <div className="flex justify-between  px-[20px] py-[10px]">
                     <div className="flex justify-between items-center ">
-                        <div className="flex ">
-                            <div className="mr-1">
+                        <div className="flex">
+                            <div className="mr-1 basis-0">
                                 <input id="remember"
                                     type="checkbox"
                                     className="cursor-pointer"
                                     {...register("remember")}
                                 />
                             </div>
-                            <span className="text-white">
+                            <span className="inline-block text-white flex-shrink-0">
                                 <label htmlFor="remember" className="cursor-pointer">Remember Me</label>
                             </span>
                         </div>
-                        <div >
-                            <button type="button" className="text-white">Forgot password</button>
+                        <div className="flex basis-auto justify-end">
+                            <button type="button" className="text-white flex-shrink-0">Forgot password</button>
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ function LoginComponent({
                                 }
                             />
                         </div>
-                        <div className="flex h-full text-white">
+                        <div className="flex h-full flex-1 text-white">
                             <FaRegUser />
                         </div>
                     </div>
@@ -69,7 +69,7 @@ function LoginComponent({
                                 }
                             />
                         </div>
-                        <div className="flex h-full text-white">
+                        <div className="flex h-full flex-1 text-white">
                             <FaLock />
                         </div>
                     </div>
@@ -77,8 +77,8 @@ function LoginComponent({
 
                 <div className="flex justify-between  px-[20px] py-[10px]">
                     <div className="flex justify-between items-center ">
-                        <div className="flex ">
-                            <div className="mr-1">
+                        <div className="flex flex-grow">
+                            <div className="w-auto mr-1">
                                 <input id="remember"
                                     type="checkbox"
                                     className="cursor-pointer"
@@ -89,8 +89,8 @@ function LoginComponent({
                                 <label htmlFor="remember" className="cursor-pointer">Remember Me</label>
                             </span>
                         </div>
-                        <div >
-                            <button type="button" className="text-white">Forgot password</button>
+                        <div className="flex justify-end">
+                            <button type="button" className="flex-shrink-0 text-white">Forgot password</button>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ function LoginComponent({
                     </div>
                 </div>
                 <div className="flex ">
-                    <div className='flex  px-[20px] pb-[10px] text-white justify-center'>
+                    <div className='flex px-[20px] pb-[10px] text-white justify-center'>
                         <span className="mr-2">Don't have account?</span>
                         <button type="button" className="border-b-2 border-transparent hover:border-white">
                             <Link to="/register">Register</Link>
