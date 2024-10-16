@@ -1,6 +1,7 @@
 import TitleComponent from "@components/Title";
 import ProfileComponent from "@components/Profile";
 import MenubarComponent from "@components/Menubar";
+import PostPreviewComponent from "@components/PostPreview";
 
 
 function HomePage() {
@@ -25,20 +26,31 @@ function HomePage() {
             </div>
             <div className="h-[100px] lg:w-[400px] lg:h-full flex-shrink-0" />
             {/* 사이드 메뉴바 */}
-            <div className="fixed bottom-0 w-full lg:static lg:w-[100px] lg:h-full lg:flex lg:items-center border border-[#E6E6E6] ">
+            <div className="fixed bottom-0 w-full lg:static lg:w-[100px] lg:h-full lg:flex lg:items-center">
                 <MenubarComponent currentPath="/" />
                 {/* <NavigationMenu /> */}
             </div>
-            <div className="">
-
-                Body
-                {/* <PostList>
+            <div className="px-[10px] py-[10px] lg:px-[40px] lg:py-[40px]">
+                {/* 최신 순, 추천 순 OrderComponent */}
+                <div className="mb-[10px] lg:mb-[20px]">
+                    <div className="w-full border-b-2 border-gray flex justify-center lg:block">
+                        <span className="p-4 inline-block">Following</span>
+                        <span className="p-4 inline-block box-border text-gray opacity-40">Recommended</span>
+                    </div>
+                </div>
+                <div>
+                    <PostPreviewComponent />
+                    <PostPreviewComponent />
+                    <PostPreviewComponent />
+                </div>
+            </div>
+            {/* <PostList>
                     <Post/>
                     <Post />
                     <Post />
                 </PostList> */}
-            </div>
         </div>
+
     )
 }
 
