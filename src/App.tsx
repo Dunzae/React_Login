@@ -7,6 +7,7 @@ import router from "./routes"
 import { getLocalStorageItem } from "@utils/storage";
 
 const App = () => {
+  const [checkMounted, setCheckMounted] = useState(false);
   const [accessToken, setAccessToken] = useState<undefined | string>(undefined);
   const [refreshToken, setRefreshToken] = useState<undefined | string>(undefined);
   const tokenContextValue = useMemo(() => ({
@@ -15,6 +16,10 @@ const App = () => {
     setAccessToken,
     setRefreshToken
   }), [accessToken, refreshToken]);
+
+  useEffect(() => {
+    setCheckMounted(true)
+  }, [])
 
   useEffect(() => {
     const storageToken = getLocalStorageItem("token");
