@@ -33,11 +33,13 @@ function LoginContainer() {
             token.setRefreshToken(result.data?.refreshToken);
 
             if(remember) {
+                // remeemberme를 눌렀을 경우 유효기간을 설정하지 않는다.
                 setLocalStorageItem("token", {
                     accessToken: result.data?.accessToken,
                     refreshToken: result.data?.refreshToken,
                 })
             } else {
+                // rememberme를 누르지 않았을 경우 최대 로그인 시간을 1시간으로 설정한다.
                 setLocalStorageItem("token", {
                     accessToken: result.data?.accessToken,
                     refreshToken: result.data?.refreshToken,

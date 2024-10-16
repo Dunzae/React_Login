@@ -4,6 +4,7 @@ import "normalize.css"
 import "./global.css";
 import TokenContext from "@constants/TokenContext";
 import router from "./routes"
+import { getLocalStorageItem } from "@utils/storage";
 
 const App = () => {
   const [accessToken, setAccessToken] = useState<undefined | string>(undefined);
@@ -16,20 +17,11 @@ const App = () => {
   }), [accessToken, refreshToken]);
 
   useEffect(() => {
-    const storageToken = JSON.parse(localStorage.getItem("token") || "{}")
+    const storageToken = getLocalStorageItem("token");
 
-    if (Object.keys(storageToken).length !== 0) {
-      if (storageToken.value.accessToken && storageToken.value.refreshToken) {
-        if (storageToken.opt) {
-          if (storageToken.opt.exp > Date.now()) {
-            setAccessToken(storageToken.value.accessToken);
-            setRefreshToken(storageToken.value.refreshToken)
-          }
-        } else {
-          setAccessToken(storageToken.value.accessToken);
-          setRefreshToken(storageToken.value.refreshToken)
-        }
-      }
+    if (storageToken !== undefined) {
+      setAccessToken(storageToken.value.accessToken);
+      setRefreshToken(storageToken.value.refreshToken)
     }
   })
 

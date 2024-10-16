@@ -8,15 +8,29 @@ interface IParsedItem {
 export function getLocalStorageItem(key: string) {
     const item = localStorage.getItem(key);
 
+    // 키에 해당하는 값이 존재하지 않는 경우
     if (item === null) return undefined;
 
     const parsedItem: IParsedItem = JSON.parse(item);
-    if (Date.now() > parsedItem.opt.exp) {
-        localStorage.removeItem(key);
-        return undefined;
-    } else {
+    // 옵션 값이 없을 경우
+    if(parsedItem.opt === undefined || Object.keys(parsedItem.opt).length === 0) {
         return parsedItem.value;
+    } 
+
+    // 옵션값 중에 유효식나을 나타내는 값이 존재하는 경우
+    if(parsedItem.opt.exp !== undefined) {
+        // 유효시간안에 있을 경우엔 값 반환
+        if(parsedItem.opt.exp > Date.now()) {
+            return parsedItem.value;
+        } 
+        // 유효시간을 넘었을 경우 undefined 반환
+        else {
+            return undefined;
+        }
     }
+
+    // 옵션이 없을 경우 값 반환
+    return parsedItem.value;
 }
 
 export function setLocalStorageItem(key: string, value: any, opt?: any) {
