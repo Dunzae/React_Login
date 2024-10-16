@@ -17,7 +17,7 @@ function ProfileComponent({
         <div className={"flex flex-col flex-shrink-0 " + (className ?? "")} >
             {/* 프로필 이미지 */}
             <div className="flex justify-center" >
-                <div className="w-[200px] border-2 border-white rounded-[20%] overflow-hidden flex mb-4">
+                <div className="w-[200px] rounded-[20%] overflow-hidden flex mb-4">
                     <img className="w-full h-full cover" src={profileImage} />
                 </div>
             </div >

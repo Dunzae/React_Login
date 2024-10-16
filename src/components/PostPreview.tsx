@@ -21,7 +21,7 @@ function PostPreviewComponent({
                     <span className="mx-2">·</span>
                     <span className="text-[14px] text-[#757575]">작성 날짜</span>
                 </div>
-                <div className="lg:flex lg:flex-col lg:w-full">
+                <div className="lg:flex lg:flex-col lg:w-full lg:max-w-[600px]">
                     <p className="text-[#191919] mb-2 font-[Roboto] font-bold text-[22px] ">Your portfolio is stopping you from geting that job</p>
                     <p className="text-[#292929]">
                         An intense way to learn about the process and practice your designs skills — My 1st hackathon Hackathons have been on my mind since I heard it was a good way to gain experience as a junior UX designer. As my portfolio...
