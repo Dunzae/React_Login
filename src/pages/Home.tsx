@@ -9,7 +9,7 @@ function HomePage() {
 
     return (
         <div className="h-full lg:flex lg:flex-row">
-            <div className="h-[100px] fixed bg-white lg:w-[24%] lg:h-full lg:flex lg:flex-col lg:bg-[url('assets/images/sideBarBackground.jpg')] lg:bg:transparent lg:bg-cover lg:bg-origin lg:bg-[-80px_0%] lg:justify-center">
+            <div className="h-[100px] fixed bg-white lg:min-w-[320px] lg:w-[24%] lg:h-full lg:flex lg:flex-col lg:bg-[url('assets/images/sideBarBackground.jpg')] lg:bg:transparent lg:bg-cover lg:bg-origin lg:bg-[-80px_0%] lg:justify-center">
                 <div className="h-auto">
                     <div className="h-full flex flex-col">
                         <div className="text-black flex justify-center bg-white lg:bg-transparent lg:w-full lg:text-white lg:flex lg:justify-center lg:mb-2">
@@ -24,9 +24,9 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className="h-[100px] lg:w-[24%] lg:h-full flex-shrink-0" />
+            <div className="h-[100px] lg:min-w-[320px] lg:w-[24%] lg:h-full flex-shrink-0" />
             {/* 사이드 메뉴바 */}
-            <div className="fixed bottom-0 w-full lg:static lg:w-[100px] lg:h-full lg:flex lg:items-center">
+            <div className="fixed bottom-0 w-full lg:flex-shrink-0 lg:static lg:w-[100px] lg:h-full lg:flex lg:items-center">
                 <MenubarComponent currentPath="/" />
                 {/* <NavigationMenu /> */}
             </div>

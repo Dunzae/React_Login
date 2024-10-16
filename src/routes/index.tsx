@@ -4,6 +4,7 @@ import LoginPage from "@pages/Login";
 import RegisterPage from "@pages/Register";
 import LogoutPage from "@pages/Logout";
 import ProtectedRoute from "./ProtectedRoute";
+import NotificationPage from "@pages/Notification";
 
 const router = createBrowserRouter([
     // 모두가 접근할 수 있는 라우트
@@ -37,14 +38,9 @@ const router = createBrowserRouter([
                 element : <HomePage />
             },
             {
-                path : "/write",
-                element : <div>글 작성 페이지</div>
+                path : "/notification",
+                element : <NotificationPage />
             },
-            {
-                path : "/read",
-                element : <div>글 보기 페이지</div>
-            },
-            
         ]
     },
 ])
