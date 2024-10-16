@@ -30,6 +30,8 @@ const App = () => {
     }
   })
 
+  if(!checkMounted) return null;
+
   return (
     <TokenContext.Provider value={tokenContextValue}>
       <RouterProvider router={router} />
