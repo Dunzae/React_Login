@@ -37,7 +37,7 @@ function LayoutComponent({
 
                     {/* 메뉴의 슬라이드 영역 */}
                     <div style={{ scrollbarWidth: 'none' }}
-                        className="h-[100%] pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)]"
+                        className="h-[100%] pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] hidden"
                     >
                         <div className="lg:px-[20px] lg:py-[20px] lg:min-h-dvh bg-[#fafafa]">
                             <div className="mb-[10px]">
@@ -89,7 +89,7 @@ function LayoutComponent({
                     </div>
                 </div>
             </div>
-            <div className="w-full min-h-full ">
+            <div className="w-full min-h-full pb-[60px]">
                 {children}
             </div>
         </div>

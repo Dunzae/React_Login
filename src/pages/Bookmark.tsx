@@ -1,18 +1,19 @@
 import LayoutComponent from "@components/Layout";
 import PostPreviewComponent from "@components/PostPreview";
+import TabMenuComponent from "@components/TabMenu";
 
 function BookmarkPage() {
     return (
         <LayoutComponent>
             <div className="px-[10px] py-[10px] min-h-dvh bg-[#f2f2f2] lg:px-[40px] lg:py-[40px]">
-                {/* 최신 순, 추천 순 */}
-                <div className="mb-[5px] top-[100px] fixed bg-white lg:flex lg:top-0 lg:static lg:mb-[20px]">
-                    <div className="w-full border-b-2 border-gray flex justify-center lg:block">
-                        <span className="p-4 inline-block">Following</span>
-                        <span className="p-4 inline-block box-border text-gray opacity-40">Recommended</span>
+                <div>
+                    {/* 공지 사항, 업데이트 목록 */}
+                    <div className="fixed top-[100px] left-0 px-[10px] py-[10px] box-border bg-[#f2f2f2] lg:flex lg:top-0 lg:px-0 lg:py-0 lg:static lg:mb-[20px]">
+                        <TabMenuComponent />
                     </div>
+                    {/* fixed 공간을 차지 하기 위한 div */}
+                    <div className="w-full h-[58px] mb-[10px] lg:hidden" />
                 </div>
-                <div className="w-full h-[58px] lg:hidden" />
                 <div >
                     <PostPreviewComponent />
                     <PostPreviewComponent />
