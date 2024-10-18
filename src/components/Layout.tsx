@@ -84,7 +84,7 @@ function LayoutComponent({
                             </div>
                         </div>
                     </div>
-                    <div className="fixed bottom-0 left-0 right-0 bg-white">
+                    <div className="fixed bottom-0 left-0 bg-white lg:absolute lg:top-0 lg:w-full">
                         <MenubarComponent currentPath="/" />
                     </div>
                 </div>
