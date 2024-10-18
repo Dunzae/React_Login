@@ -32,12 +32,14 @@ function LayoutComponent({
             {/* 제목과 프로필란의 공간 차지를 위한 div */}
             <div className="h-[100px] lg:min-w-[320px] lg:w-[24%] lg:h-full flex-shrink-0" />
             {/* 사이드 메뉴바 */}
-             <div className="lg:w-[100px] lg:flex lg:h-dvh lg:flex-shrink-0 lg:relative">
-                <div className="fixed bottom-0 w-full lg:top-0 lg:flex lg:w-[100px] lg:items-center z-[10000]">
-                    <MenubarComponent currentPath="/" />
+            <div className="lg:w-[100px] lg:flex lg:h-dvh lg:flex-shrink-0 lg:relative">
+                <div className="fixed top-[110px] bottom-0 w-full lg:top-0 lg:flex lg:w-[100px] lg:items-center z-[10000]">
+
                     {/* 메뉴의 슬라이드 영역 */}
-                    <div className="lg:w-[400px] lg:h-dvh lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] hidden">
-                        <div className="px-[20px] py-[20px] min-h-dvh bg-[#fafafa]">
+                    <div style={{ scrollbarWidth: 'none' }}
+                        className="h-[100%] pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)]"
+                    >
+                        <div className="lg:px-[20px] lg:py-[20px] lg:min-h-dvh bg-[#fafafa]">
                             <div className="mb-[10px]">
                                 <NotificationComponent />
                             </div>
@@ -50,10 +52,43 @@ function LayoutComponent({
                             <div className="mb-[10px]">
                                 <NotificationComponent4 />
                             </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
                         </div>
                     </div>
+                    <div className="fixed bottom-0 left-0 right-0 bg-white">
+                        <MenubarComponent currentPath="/" />
+                    </div>
                 </div>
-            </div> 
+            </div>
             <div className="w-full min-h-full ">
                 {children}
             </div>
