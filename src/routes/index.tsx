@@ -4,7 +4,7 @@ import LoginPage from "@pages/Login";
 import RegisterPage from "@pages/Register";
 import LogoutPage from "@pages/Logout";
 import ProtectedRoute from "./ProtectedRoute";
-import PostPage from "@pages/Post";
+import ChatPage from "@pages/Chat";
 import BookmarkPage from "@pages/Bookmark";
 import ProfilePage from "@pages/Profile";
 
@@ -36,8 +36,8 @@ const router = createBrowserRouter([
             },
             {
                 // 게시글 페이지
-                path: "/post",
-                element: <PostPage />
+                path: "/chat",
+                element: <ChatPage />
             },
             {
                 // 프로필 페이지
