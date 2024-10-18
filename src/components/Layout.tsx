@@ -1,8 +1,10 @@
 import TitleComponent from "@components/Title";
 import ProfileComponent from "@components/Profile";
 import MenubarComponent from "@components/Menubar";
-import PostPreviewComponent from "@components/PostPreview";
-
+import NotificationComponent from "./Notification";
+import NotificationComponent2 from "./Notification2";
+import NotificationComponent3 from "./Notification3";
+import NotificationComponent4 from "./Notification4";
 interface ILayoutComponent {
     children: React.ReactNode
 }
@@ -30,13 +32,29 @@ function LayoutComponent({
             {/* 제목과 프로필란의 공간 차지를 위한 div */}
             <div className="h-[100px] lg:min-w-[320px] lg:w-[24%] lg:h-full flex-shrink-0" />
             {/* 사이드 메뉴바 */}
-            <div className="lg:w-[100px] lg:flex-shrink-0 lg:static  lg:h-full">
-                <div className="fixed bottom-0 w-full lg:top-0 lg:flex lg:items-center lg:w-[100px]">
+             <div className="lg:w-[100px] lg:flex lg:h-dvh lg:flex-shrink-0 lg:relative">
+                <div className="fixed bottom-0 w-full lg:top-0 lg:flex lg:w-[100px] lg:items-center z-[10000]">
                     <MenubarComponent currentPath="/" />
+                    {/* 메뉴의 슬라이드 영역 */}
+                    <div className="lg:w-[400px] lg:h-dvh lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] hidden">
+                        <div className="px-[20px] py-[20px] min-h-dvh bg-[#fafafa]">
+                            <div className="mb-[10px]">
+                                <NotificationComponent />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent2 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent3 />
+                            </div>
+                            <div className="mb-[10px]">
+                                <NotificationComponent4 />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {/* <NavigationMenu /> */}
-            </div>
-            <div className="min-h-full bg-[#f2f2f2]">
+            </div> 
+            <div className="w-full min-h-full ">
                 {children}
             </div>
         </div>
