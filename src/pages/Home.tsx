@@ -4,7 +4,7 @@ import LayoutComponent from "@components/Layout";
 function HomePage() {
     return (
         <LayoutComponent>
-            <div className="px-[10px] py-[10px] lg:px-[40px] lg:py-[40px] lg:min-h-dvh bg-[#f2f2f2]">
+            <div className="px-[10px] py-[10px] min-h-dvh bg-[#f2f2f2] lg:px-[40px] lg:py-[40px]">
                 {/* 공지 사항, 업데이트 목록 */}
                 <div className="mb-[5px] top-[100px] fixed bg-white lg:flex lg:top-0 lg:static lg:mb-[20px]">
                     <div className="w-full border-b-2 border-gray flex justify-center lg:block">
