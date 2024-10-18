@@ -3,6 +3,8 @@ import {
     IoPerson, IoPersonOutline
 } from "react-icons/io5";
 import { IoMdNotifications, IoMdNotificationsOutline } from "react-icons/io";
+import { BsChatSquareText, BsChatSquareTextFill } from "react-icons/bs";
+
 import { useNavigate } from "react-router-dom";
 
 interface IMenubarComponent {
@@ -26,8 +28,8 @@ function MenubarComponent({
                 <li onClick={() => navigate("/bookmark")} className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
                     {currentPath === "/bookmark" ? <IoBookmark size={30} /> : <IoBookmarkOutline size={30} />}
                 </li>
-                <li onClick={() => navigate("/post")} className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
-                    {currentPath === "/post" ? <IoDocumentTextSharp size={30} /> : <IoDocumentTextOutline size={30} />}
+                <li onClick={() => navigate("/chat")} className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
+                    {currentPath === "/chat" ? <BsChatSquareTextFill size={30} /> : <BsChatSquareText size={30} />}
                 </li>
                 <li onClick={() => navigate("/profile")} className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
                     {currentPath === "/profile" ? <IoPerson size={30} /> : <IoPersonOutline size={30} />}
