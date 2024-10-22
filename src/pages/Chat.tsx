@@ -1,13 +1,14 @@
 import LayoutComponent from "@components/Layout";
 import ProfileImage from "@assets/images/profile.jpg";
 import { IoSearchOutline } from "react-icons/io5";
+import { CiUser } from "react-icons/ci";
 
 function ChatPage() {
     return (
         <LayoutComponent>
-            <div className="min-h-dvh bg-[#f2f2f2]">
-                <div className='flex lg:h-dvh lg:overflow-hidden pb-[100px] lg:pb-0 lg:min-w-[800px]'>
-                    <div className="flex-grow lg:w-[40%] lg:basis-auto lg:h-full ">
+            <div className="min-h-dvh bg-[#f2f2f2] py-2 lg:py-0">
+                <div className='flex lg:h-dvh lg:overflow-hidden box-border pb-[100px] lg:pb-0 lg:min-w-[800px]'>
+                    <div className="hidden lg:flex lg:flex-grow lg:flex-col lg:w-[40%] lg:basis-auto lg:h-full ">
                         <div className="lg:w-full px-4 py-4">
                             <div className="flex items-center p-3 w-[60%] rounded-xl bg-white">
                                 <div className="flex-grow-0 basis-0 mr-2">
@@ -16,7 +17,7 @@ function ChatPage() {
                                 <input className="w-full" placeholder="Search..." />
                             </div>
                         </div>
-                        <div style={{scrollbarWidth: 'none'}} className="flex flex-col lg:overflow-y-scroll lg:h-[calc(100%-80px)]">
+                        <div style={{ scrollbarWidth: 'none' }} className="flex flex-col lg:overflow-y-scroll lg:h-[calc(100%-80px)]">
                             <div className="flex w-full mb-1">
                                 <div className="w-full flex flex-grow bg-white p-4">
                                     <div className="flex-shrink-0 basis-0 ">
@@ -181,9 +182,66 @@ function ChatPage() {
 
                         </div>
                     </div>
-                    <div className="flex-grow lg:w-[60%] lg:basis-auto lg:h-full hidden lg:block">
-                        <div>채팅하고 있는 사람</div>
-                        <div>채팅 컴포넌트</div>
+                    <div className="flex-grow lg:w-[60%] flex flex-col h-full lg:basis-auto lg:h-full">
+                        <div className="hidden lg:flex lg:w-full lg:h-[80px] lg:p-2">
+                            <div className="bg-white flex lg:w-full lg:h-full lg:items-center px-4 flex-grow-0">
+                                <CiUser className="mr-4" size={20} />
+                                <span>
+                                    장동건
+                                </span>
+                            </div>
+                        </div>
+                        <div className="lg:w-full lg:p-2 lg:py-0 lg:flex-grow ">
+                            <div className="lg:flex lg:flex-col h-full  bg-white p-2 lg:p-4 ">
+                                <div className="w-full flex flex-wrap items-center lg:flex-nowrap lg:pb-2 lg:items-start">
+                                    <div className="hidden w-[44px] h-[44px] mr-2 overflow-hidden rounded-[50%] flex-shrink-0 flex-grow-0 lg:flex lg:mr-0">
+                                        <img src={ProfileImage} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="w-full flex-shrink-0 py-4 pl-2 flex flex-col gap-4 lg:py-0">
+                                        <div className="flex items-end gap-2">
+                                            <p className="p-4 w-fit bg-slate-100 rounded-xl shadow-md ">안녕</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                        <div className="flex items-end gap-2">
+                                            <p className="p-4 w-fit bg-slate-100 rounded-xl shadow-md ">반가워, 나는 장동건이야</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                        <div className="flex items-end gap-2">
+                                            <p className="p-4 w-fit bg-slate-100 rounded-xl shadow-md ">새학기에 너를 만나서 기뻐</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                        <div className="flex items-end gap-2">
+                                            <p className="p-4 w-fit bg-slate-100 rounded-xl shadow-md ">잘 지내보자.</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className=" w-full pb-2 flex flex-wrap items-center flex-row-reverse lg:flex-nowrap lg:items-start">
+                                    <div className="hidden lg:flex w-[44px] h-[44px] overflow-hidden rounded-[50%] flex-shrink-0 ">
+                                        <img src={ProfileImage} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="pl-2 flex flex-col gap-4">
+                                        <div className="flex justify-end items-end gap-2">
+                                            <p className="p-4 w-fit bg-blue-100 rounded-xl shadow-md ">안녕</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                        <div className="flex justify-end items-end gap-2">
+                                            <p className="p-4 w-fit bg-blue-100 rounded-xl shadow-md ">반가워, 나는 장동건이야</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                        <div className="flex justify-end items-end gap-2">
+                                            <p className="p-4 w-fit bg-blue-100 rounded-xl shadow-md ">새학기에 너를 만나서 기뻐</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                        <div className="flex justify-end items-end gap-2">
+                                            <p className="p-4 w-fit bg-blue-100 rounded-xl shadow-md ">잘 지내보자.</p>
+                                            <span className="text-sm text-slate-400">어제</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
