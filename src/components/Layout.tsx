@@ -35,11 +35,11 @@ function LayoutComponent({
             <div className="h-[100px] lg:min-w-[320px] lg:w-[24%] lg:h-full flex-shrink-0" />
             {/* 사이드 메뉴바 */}
             <div className="lg:w-[100px] lg:flex lg:h-dvh lg:flex-shrink-0 lg:relative">
-                <div className="fixed top-[110px] bottom-0 w-full lg:top-0 lg:flex lg:w-[100px] lg:items-center z-[10000]">
+                <div className="fixed overflow-y-scroll top-[110px] bottom-0 w-full lg:top-0 lg:flex lg:w-[100px] lg:items-center z-[10000] lg:overflow-visible">
 
                     {/* 메뉴의 슬라이드 영역 */}
-                    <div style={{ scrollbarWidth: 'none' }}
-                        className={"h-[100%] pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] " +
+                    <div style={{ scrollbarWidth: 'thin' }}
+                        className={"min-h-full pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] " +
                             `${notificationClicked ? 'flex' : 'hidden'}`
                         }
                     >
