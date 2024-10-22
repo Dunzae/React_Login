@@ -5,6 +5,7 @@ import NotificationComponent from "./Notification";
 import NotificationComponent2 from "./Notification2";
 import NotificationComponent3 from "./Notification3";
 import NotificationComponent4 from "./Notification4";
+import { useState } from "react";
 interface ILayoutComponent {
     children: React.ReactNode
 }
@@ -12,6 +13,7 @@ interface ILayoutComponent {
 function LayoutComponent({
     children
 }: ILayoutComponent) {
+    const [notificationClicked, setNotificationClicked] = useState(false);
     return (
         <div className="h-auto lg:flex lg:flex-row">
             <div className="h-[100px] fixed bg-white lg:min-w-[320px] lg:w-[24%] lg:h-full lg:flex lg:flex-col lg:bg-[url('assets/images/sideBarBackground.jpg')] lg:bg:transparent lg:bg-cover lg:bg-origin lg:bg-[-80px_0%] lg:justify-center">
@@ -37,7 +39,9 @@ function LayoutComponent({
 
                     {/* 메뉴의 슬라이드 영역 */}
                     <div style={{ scrollbarWidth: 'none' }}
-                        className="h-[100%] pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] hidden"
+                        className={"h-[100%] pb-[100px] lg:w-[400px] lg:h-dvh overflow-y-scroll lg:top-0 lg:left-[100%] lg:bg-white lg:absolute lg:border-r-2 lg:shadow-[4px_0_24px_rgba(0,0,0,0.15)] " +
+                            `${notificationClicked ? 'flex' : 'hidden'}`
+                        }
                     >
                         <div className="lg:px-[20px] lg:py-[20px] lg:min-h-dvh bg-[#fafafa]">
                             <div className="mb-[10px]">
@@ -85,11 +89,11 @@ function LayoutComponent({
                         </div>
                     </div>
                     <div className="fixed bottom-0 left-0 bg-white lg:absolute lg:top-0 lg:w-full">
-                        <MenubarComponent currentPath="/" />
+                        <MenubarComponent currentPath="/" setNotificationClicked={setNotificationClicked}/>
                     </div>
                 </div>
             </div>
-            <div className="w-full min-h-full pb-[60px]">
+            <div className="w-full min-h-full">
                 {children}
             </div>
         </div>

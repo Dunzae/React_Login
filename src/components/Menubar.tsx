@@ -8,11 +8,13 @@ import { BsChatSquareText, BsChatSquareTextFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 interface IMenubarComponent {
-    currentPath: string
+    currentPath: string,
+    setNotificationClicked : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 function MenubarComponent({
-    currentPath
+    currentPath,
+    setNotificationClicked
 }: IMenubarComponent) {
     const navigate = useNavigate();
 
@@ -22,7 +24,9 @@ function MenubarComponent({
                 <li onClick={() => navigate("/")} className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
                     {currentPath === "/" ? <IoHome size={30} /> : <IoHomeOutline size={30} />}
                 </li>
-                <li className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
+                <li className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer" 
+                 onClick={() => setNotificationClicked(_s => !_s)}
+                >
                     {currentPath === "/notification" ? <IoMdNotifications size={30} /> : <IoMdNotificationsOutline size={30} />}
                 </li>
                 <li onClick={() => navigate("/bookmark")} className="p-4 flex flex-grow justify-center lg:flex-grow-0 lg:mx-2 lg:my-8 lg:p-2 lg:w-[60px] lg:h-[30px] lg:flex lg:justify-center lg:items-center lg:cursor-pointer">
