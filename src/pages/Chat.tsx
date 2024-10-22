@@ -17,7 +17,7 @@ function ChatPage() {
                                 <input className="w-full" placeholder="Search..." />
                             </div>
                         </div>
-                        <div style={{ scrollbarWidth: 'none' }} className="flex flex-col lg:overflow-y-scroll lg:h-[calc(100%-80px)]">
+                        <div style={{ scrollbarWidth: 'thin' }} className="flex flex-col lg:overflow-y-scroll lg:h-[calc(100%-80px)]">
                             <div className="flex w-full mb-1">
                                 <div className="w-full flex flex-grow bg-white p-4">
                                     <div className="flex-shrink-0 basis-0 ">
